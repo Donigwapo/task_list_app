@@ -48,3 +48,5 @@ group :development do
   # gem "spring"
 end
 
+
+gem "render_build_setup", "~> 0.0.1"
