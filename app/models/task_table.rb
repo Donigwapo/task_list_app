@@ -1,0 +1,2 @@
+class TaskTable < ApplicationRecord
+end
