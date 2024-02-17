@@ -81,4 +81,4 @@ production:
   <<: *default
   database: task_project_production
   username: task_project
-  password: <%= ENV["TASK_PROJECT_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
