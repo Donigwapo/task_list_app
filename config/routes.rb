@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -14,10 +18,14 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :tasklist, param: :id, format: :json
+      post 'sign_up', to: 'registrations#create' # Custom sign-up route
+      post 'sign_in', to: 'sessions#create'      # Custom sign-in route
+      get 'me', to: 'users#show'                  # Custom current user route
+
         end
       end
  
 
-  get '/pages', to: 'pages#index', via: :all
+  #get '/pages', to: 'pages#index', via: :all
 
 end
