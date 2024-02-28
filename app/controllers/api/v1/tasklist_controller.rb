@@ -6,14 +6,16 @@ module Api
         def index
           tasks = TaskTable.order(created_at: :desc)
           render json: TaskTableSerializer.new(tasks).serialized_json
+          
         end
   
         def show
         task = TaskTable.find_by(id: params[:id])
-          render json: TaskTableSerializer.new(task).serialized_json
+          render json: TaskTableSerializer.new(task).serialized_jsons
         end
   
         def create
+          category = Category.find(tasklist_params[:category_id])
           task = TaskTable.new(tasklist_params)
   
           if task.save
@@ -46,7 +48,7 @@ module Api
         private
   
         def tasklist_params
-            params.permit(:taskname, :taskdescription)
+            params.permit(:taskname, :taskdescription, :category_id, :isCompleted)
         end
   
        

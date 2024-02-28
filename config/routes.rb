@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :tasklist, param: :id, format: :json
+      resources :category, param: :id, format: :json
       post 'sign_up', to: 'registrations#create' # Custom sign-up route
       post 'sign_in', to: 'sessions#create'      # Custom sign-in route
       get 'me', to: 'users#show'                  # Custom current user route
