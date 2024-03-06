@@ -18,15 +18,20 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :tasklist, param: :id, format: :json
-      resources :category, param: :id, format: :json
+      resources :category, param: :id, format: :json, only: [:index, :show, :create, :update, :destroy] do
+        collection do
+          get :users
+        end
+        member do
+          get 'users/:user_id', to: 'category#users_category'
+         
+        end
+      end
+      resources :users, only: [:index, :show, :destroy]
       post 'sign_up', to: 'registrations#create' # Custom sign-up route
       post 'sign_in', to: 'sessions#create'      # Custom sign-in route
       get 'me', to: 'users#show'                  # Custom current user route
-
-        end
-      end
- 
-
-  #get '/pages', to: 'pages#index', via: :all
-
+      get 'users/:id', to: 'users#destroy'
+    end
+  end
 end

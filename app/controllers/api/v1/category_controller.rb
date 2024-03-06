@@ -42,11 +42,21 @@ module Api
             render json: { error: categories.errors.messages }, status: 422
           end
         end
+
+        def users
+          user_ids_with_categories = Category.pluck(:user_id).uniq
+          render json: user_ids_with_categories
+        end
+
+        def users_category
+          user_categories = Category.where(user_id: params[:user_id])
+          render json: user_categories
+        end
   
         private
   
         def categories_params
-            params.permit(:name)
+            params.permit(:name, :user_id)
         end
   
        
