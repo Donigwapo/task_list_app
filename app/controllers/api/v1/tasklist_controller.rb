@@ -48,7 +48,7 @@ module Api
         private
   
         def tasklist_params
-            params.permit(:taskname, :taskdescription, :category_id, :isCompleted, :user_id, :end_date)
+          params.permit(:taskname, :taskdescription, :category_id, :isCompleted, :user_id, :end_date).require(:category_id)
         end
   
        
