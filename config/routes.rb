@@ -13,8 +13,9 @@ Rails.application.routes.draw do
   # root "posts#index"
 
 
-  root 'pages#index'
-
+  root 'api/v1/index#index'
+ 
+  
   namespace :api do
     namespace :v1 do
       resources :tasklist, param: :id, format: :json
@@ -22,6 +23,7 @@ Rails.application.routes.draw do
         collection do
           get :users
         end
+        
         member do
           get 'users/:user_id', to: 'category#users_category'
          
@@ -32,6 +34,9 @@ Rails.application.routes.draw do
       post 'sign_in', to: 'sessions#create'      # Custom sign-in route
       get 'me', to: 'users#show'                  # Custom current user route
       get 'users/:id', to: 'users#destroy'
+     
     end
-  end
+  end 
+  #  get '*path', to: 'pages#index', via: :all
+ 
 end

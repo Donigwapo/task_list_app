@@ -1,0 +1,25 @@
+<!-- index.html.erb -->
+
+<h1>Task Tables</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Task Name</th>
+      <th>Task Description</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @task_tables.each do |task_table| %>
+      <tr>
+        <td><%= task_table.taskname %></td>
+        <td><%= task_table.taskdescription %></td>
+        <td>
+          <%= link_to 'Edit', edit_task_table_path(task_table) %>
+          <%= button_to 'Delete', task_table, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

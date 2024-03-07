@@ -1,6 +1,6 @@
 module Api
     module V1
-      class UsersController < ApplicationController
+      class UsersController < BaseController
         def index
           @users = User.all
           render json: @users
