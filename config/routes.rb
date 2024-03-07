@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   # root "posts#index"
 
 
-  root 'api/v1/index#index'
+   root 'pages#index'
  
   
   namespace :api do
