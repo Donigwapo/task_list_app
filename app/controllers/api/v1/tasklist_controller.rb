@@ -15,7 +15,7 @@ module Api
         end
   
         def create
-          category = Category.find(tasklist_params)
+          category = Category.find(tasklist_params[:category_id])
           task = TaskTable.new(tasklist_params)
   
           if task.save
@@ -48,7 +48,7 @@ module Api
         private
   
         def tasklist_params
-          params.permit(:taskname, :taskdescription, :category_id, :isCompleted, :user_id, :end_date).require(:category_id)
+          params.permit(:taskname, :taskdescription, :category_id, :isCompleted, :user_id, :end_date)
         end
   
        
