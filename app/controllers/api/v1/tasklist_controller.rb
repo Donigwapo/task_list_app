@@ -15,7 +15,7 @@ module Api
         end
   
         def create
-          category = Category.find(tasklist_params[:category_id])
+          category = Category.find(tasklist_params)
           task = TaskTable.new(tasklist_params)
   
           if task.save
