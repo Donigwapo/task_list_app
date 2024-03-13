@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'dashboard', to: 'dashboard#index'
+  end
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'
@@ -13,7 +16,7 @@ Rails.application.routes.draw do
   # root "posts#index"
 
 
-   root 'pages#index'
+  #  root 'api/v1/index#index'
  
   
   namespace :api do
@@ -37,6 +40,10 @@ Rails.application.routes.draw do
      
     end
   end 
+  
   #  get '*path', to: 'pages#index', via: :all
+
+
+  
  
 end

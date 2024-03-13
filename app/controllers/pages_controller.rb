@@ -1,4 +1,3 @@
-class PagesController < ApplicationController
-    def index
-    end
+class PagesController < ActionController::Base
+            
 end

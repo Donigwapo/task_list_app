@@ -1,6 +1,6 @@
 module Api
     module V1
-      class TasklistController < ApplicationController
+      class TasklistController < PagesController
         
 
         def index
