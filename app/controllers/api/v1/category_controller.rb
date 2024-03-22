@@ -1,6 +1,6 @@
 module Api
     module V1
-      class CategoryController < PagesController
+      class CategoryController < ApplicationController
         
 
         def index
